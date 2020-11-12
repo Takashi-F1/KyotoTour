@@ -1,0 +1,207 @@
+<! DOCTYPE html>
+    <html>
+
+    <head>
+
+        <link rel="stylesheet" href="stylesheet.css">
+        <title>
+            京の都最適旅
+        </title>
+        <style type="text/css">
+            #photo {
+                width: 800px;
+                height: 500px;
+                margin: 0 auto;
+                text-align: left;
+                overflow: hidden;
+                position: relative;
+            }
+
+            #photo img {
+                top: 0;
+                left: 0;
+                position: absolute;
+            }
+        </style>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                var setImg = '#photo';
+                var fadeSpeed = 1600;
+                var switchDelay = 5000;
+
+                $(setImg).children('img').css({ opacity: '0' });
+                $(setImg + ' img:first').stop().animate({ opacity: '1', zIndex: '20' }, fadeSpeed);
+
+                setInterval(function () {
+                    $(setImg + ' :first-child').animate({ opacity: '0' }, fadeSpeed).next('img').animate({ opacity: '1' }, fadeSpeed).end().appendTo(setImg);
+                }, switchDelay);
+            });
+        </script>
+
+    </head>
+
+    <body>
+
+        <body>
+            <div class="top">
+            </div>
+            <table width="800" border="0" align="center">
+                <tr>
+                    <td>
+                        <div class="kyo">
+                            <p><br>
+                            <h1 class="text">京都を満喫しよう！～京の都最適旅～</h1>
+                            <h3>以下の手順を踏むことにより最適な巡回路を出力します。<br>このサイトによって、ご旅行のお力添えが出来れば幸いです。</h3>
+                            <pre><h2>1.最初に観光したい場所を選択してください。
+                                <br>2.1で選択した観光地以外で回りたい場所を選択してください。
+                                <br>3.選択した観光地の□チェックボックスにチェックを付けてください。
+                                <br>4.旅の開始時刻を設定してください。
+                                <br>5決定ボタンを押してください。
+                                <br>6.選択した観光地への最適な順路が表示されます。</h2></pre>
+
+                            <div class="opt">
+                                <div id="photo">
+                                    <img src="./img/hokyoin.jpg">
+                                    <img src="./img/kinkakuji_autumn.jpg">
+                                    <img src="./img/kinkakuji_summer.jpg">
+                                    <img src="./img/ninnaji.jpg">
+                                    <img src="./img/kiyomizudera_autumn.jpg">
+                                    <img src="./img/kiyomizudera_summer.jpg">
+                                    <img src="./img/kiyomizudera_winter.jpg">
+                                    <img src="./img/rengeji.jpg">
+                                    <img src="./img/togetsukyou.jpg">
+                                </div><a href="http://photo53.com/" target="_blank">京都フリー写真素材</a>より<br>
+
+                                
+                                <h3 class="question">最初に行きたい場所を選択してください。</h3>
+                                
+                                <form name="start_spot">
+                                    <select>
+                                        <option value="伏見稲荷大社">伏見稲荷大社 </option>
+                                        <option value="清水寺">清水寺 </option>
+                                        <option value="金閣寺">金閣寺 </option>
+                                        <option value="東寺">東寺 </option>
+                                        <option value="南禅寺">南禅寺</option>
+                                        <option value="三十三間堂">三十三間堂 </option>
+                                        <option value="銀閣寺">銀閣寺 </option>
+                                        <option value="渡月橋">渡月橋 </option>
+                                        <option value="高台寺">高台寺 </option>
+                                        <option value="平等院">平等院 </option>
+                                        <option value="東福寺">東福寺 </option>
+                                        <option value="トロッコ嵯峨駅">トロッコ嵯峨駅 </option>
+                                        <option value="天龍寺">天龍寺 </option>
+                                        <option value="京都駅ビル">京都駅ビル </option>
+                                        <option value="鈴虫寺">鈴虫寺 </option>
+                                        <option value="元離宮二条城">元離宮二条城 </option>
+                                        <option value="天橋立">天橋立 </option>
+                                        <option value="龍安寺">龍安寺 </option>
+                                        <option value="貴船神社">貴船神社 </option>
+                                        <option value="下鴨神社">下鴨神社 </option>
+                                        <option value="北野天満宮">北野天満宮 </option>
+                                        <option value="八坂神社">八坂神社 </option>
+                                        <option value="西本願寺">西本願寺 </option>
+                                        <option value="京都鉄道博物館">京都鉄道博物館 </option>
+                                        <option value="三千院">三千院 </option>
+                                        <option value="知恩院">知恩院 </option>
+                                        <option value="仁和寺">仁和寺 </option>
+                                        <option value="京都御所">京都御所 </option>
+                                        <option value="建仁寺">建仁寺 </option>
+                                        <option value="鞍馬寺">鞍馬寺 </option>
+                                        <option value="嵐山公園">嵐山公園 </option>
+                                        <option value="平安神宮">平安神宮 </option>
+                                        <option value="京都タワー">京都タワー </option>
+                                        <option value="竹林の小径">竹林の小径 </option>
+                                    </select>
+                                </form>
+
+                                <form name="check_form">
+                                    <p class="sentaku">
+                                    <h3>先ほど選択した観光地以外で行きたい場所を選択してください。</h3>
+                                    </p>
+
+                                    <div>
+                                        <span class="t1">伏見稲荷大社<input type="checkbox" name="spot" onclick="count_spot();" value="伏見稲荷大社"></span>
+                                        <span class="t2">清水寺<input type="checkbox" name="spot" onclick="count_spot();" value="清水寺"></span>
+                                        <span class="t3">金閣寺<input type="checkbox" name="spot" onclick="count_spot();" value="金閣寺"> </span><br>
+                                        <span class="t1">東寺<input type="checkbox" name="spot" onclick="count_spot();" value="東寺"> </span>
+                                        <span class="t2">南禅寺<input type="checkbox" name="spot" onclick="count_spot();" value="南禅寺"> </span>
+                                        <span class="t3">三十三間堂<input type="checkbox" name="spot" onclick="count_spot();" value="三十三間堂"> </span><br>
+                                        <span class="t1">銀閣寺<input type="checkbox" name="spot" onclick="count_spot();" value="銀閣寺"> </span>
+                                        <span class="t2">渡月橋<input type="checkbox" name="spot" onclick="count_spot();" value="渡月橋"> </span>
+                                        <span class="t3">高台寺<input type="checkbox" name="spot" onclick="count_spot();" value="高台寺"></span><br>
+                                        <span class="t1">平等院<input type="checkbox" name="spot" onclick="count_spot();" value="平等院"> </span>
+                                        <span class="t2">東福寺<input type="checkbox" name="spot" onclick="count_spot();" value="東福寺"></span>
+                                        <span class="t3">トロッコ嵯峨駅<input type="checkbox" name="spot" onclick="count_spot();" value="トロッコ嵯峨駅"></span><br>
+                                        <span class="t1">天龍寺<input type="checkbox" name="spot" onclick="count_spot();" value="天龍寺"></span>
+                                        <span class="t2">京都駅ビル<input type="checkbox" name="spot" onclick="count_spot();" value="京都駅ビル"></span>
+                                        <span class="t3">鈴虫寺<input type="checkbox" name="spot" onclick="count_spot();" value="鈴虫寺"></span><br>
+                                        <span class="t1">元離宮二条城<input type="checkbox" name="spot" onclick="count_spot();" value="元離宮二条城"> </span>
+                                        <span class="t2">天橋立<input type="checkbox" name="spot" onclick="count_spot();" value="天橋立"></span>
+                                        <span class="t3">龍安寺<input type="checkbox" name="spot" onclick="count_spot();" value="龍安寺"></span><br>
+                                        <span class="t1">貴船神社<input type="checkbox" name="spot" onclick="count_spot();" value="貴船神社"> </span>
+                                        <span class="t2">下鴨神社<input type="checkbox" name="spot" onclick="count_spot();" value="下鴨神社"> </span>
+                                        <span class="t3">北野天満宮<input type="checkbox" name="spot" onclick="count_spot();" value="北野天満宮"></span> <br>
+                                        <span class="t1">八坂神社<input type="checkbox" name="spot" onclick="count_spot();" value="八坂神社"> </span>
+                                        <span class="t2">西本願寺<input type="checkbox" name="spot" onclick="count_spot();" value="西本願寺"></span>
+                                        <span class="t3">京都鉄道博物館<input type="checkbox" name="spot" onclick="count_spot();" value="京都鉄道博物館"></span><br>
+                                        <span class="t1">三千院<input type="checkbox" name="spot" onclick="count_spot();" value="三千院"></span>
+                                        <span class="t2">知恩院<input type="checkbox" name="spot" onclick="count_spot();" value="知恩院"></span>
+                                        <span class="t3">仁和寺<input type="checkbox" name="spot" onclick="count_spot();" value="仁和寺"></span><br>
+                                        <span class="t1">京都御所<input type="checkbox" name="spot" onclick="count_spot();" value="京都御所"></span>
+                                        <span class="t2">建仁寺<input type="checkbox" name="spot" onclick="count_spot();" value="建仁寺"></span>
+                                        <span class="t3">鞍馬寺<input type="checkbox" name="spot" onclick="count_spot();" value="鞍馬寺"></span><br>
+                                        <span class="t1">嵐山公園<input type="checkbox" name="spot" onclick="count_spot();" value="嵐山公園"></span>
+                                        <span class="t2">平安神宮<input type="checkbox" name="spot" onclick="count_spot();" value="平安神宮"></span>
+                                        <span class="t3">京都タワー<input type="checkbox" name="spot" onclick="count_spot();" value="京都タワー"></span><br>
+                                        <span class="t1">竹林の小径<input type="checkbox" name="spot" onclick="count_spot();" value="竹林の小径"></span>
+                                        <!--京都駅<input type="checkbox" name="spot" onclick="count_spot();" value="京都駅"><br>-->
+                                        <div 京都駅（終了地点で固定）> </div>
+                                </form>
+                                <div id="help"> </div>
+                                <p class="question">
+                                <h3>旅の開始時刻を設定してください。</h3>
+                                </p>
+
+                                <form name="time">
+                                    <input type="time" name="start_time" min="07:00" max="15:00" list="data1" value="10:00">
+                                    <datalist id="data1">
+                                        <option value="07:00"> </option>
+                                        <option value="07:30"> </option>
+                                        <option value="08:00"> </option>
+                                        <option value="08:30"> </option>
+                                        <option value="09:00"> </option>
+                                        <option value="09:30"> </option>
+                                        <option value="10:00"> </option>
+                                        <option value="10:30"> </option>
+                                        <option value="11:00"> </option>
+                                        <option value="11:30"> </option>
+                                        <option value="12:00"> </option>
+                                        <option value="12:30"> </option>
+                                        <option value="13:00"> </option>
+                                        <option value="13:30"> </option>
+                                        <option value="14:00"> </option>
+                                        <option value="14:30"> </option>
+                                        <option value="15:00"> </option>
+                                    </datalist>
+                                </form>
+                            </div>
+                            <br>
+                            <div class="dec">
+                                <input type="button" value="Let's Travel!" id="output" onclick="main();">
+                            </div>
+                            <br>
+                            <h2>
+                                <div id="result" align="center">
+                            </h2>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            </p>
+            </div>
+            <script type="text/javascript" src="script.js"></script>
+        </body>
+
+    </html>
